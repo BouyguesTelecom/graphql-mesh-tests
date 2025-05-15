@@ -1,0 +1,32 @@
+diff --git a/node_modules/@omnigraph/openapi/esm/getJSONSchemaOptionsFromOpenAPIOptions.js b/node_modules/@omnigraph/openapi/esm/getJSONSchemaOptionsFromOpenAPIOptions.js
+index ecc6505..e63d515 100644
+--- a/node_modules/@omnigraph/openapi/esm/getJSONSchemaOptionsFromOpenAPIOptions.js
++++ b/node_modules/@omnigraph/openapi/esm/getJSONSchemaOptionsFromOpenAPIOptions.js
+@@ -441,7 +441,7 @@ export async function getJSONSchemaOptionsFromOpenAPIOptions(name, { source, fal
+                         const xLinkObj = schemaObj.properties?.[hateOasConfig.linkObjectIdentifier]?.[hateOasConfig.linkObjectExtensionIdentifier]?.find(link => link[hateOasConfig.linkNameIdentifier] === linkName);
+                         if (xLinkObj) {
+                             const xLinkHref = xLinkObj[hateOasConfig.linkPathIdentifier];
+-                            const cleanXLinkHref = xLinkHref.replace(/{[^}]+}/g, '');
++                            const cleanXLinkHref = xLinkHref?.replace(/{[^}]+}/g, '');
+                             const deferred = createDeferred();
+                             function findActualOperationAndPath(possibleName, possibleOasDoc, possibleMethodObjFieldMap) {
+                                 let actualOperation;
+diff --git a/node_modules/@omnigraph/openapi/esm/getJSONSchemaOptionsFromOpenAPIOptions.js b/node_modules/@omnigraph/openapi/esm/getJSONSchemaOptionsFromOpenAPIOptions.js
+index 6b56ef7..ecc6505 100644
+--- a/node_modules/@omnigraph/openapi/esm/getJSONSchemaOptionsFromOpenAPIOptions.js
++++ b/node_modules/@omnigraph/openapi/esm/getJSONSchemaOptionsFromOpenAPIOptions.js
+@@ -324,7 +324,13 @@ export async function getJSONSchemaOptionsFromOpenAPIOptions(name, { source, fal
+                     operationConfig.headers = operationConfig.headers || {};
+                     operationConfig.headers.Accept = methodObj.produces.join(', ');
+                 }
+-                if ('content' in responseObj) {
++                /**
++                 * In some specifications, 204 responses have content keys with empty values ({}),
++                 * but the OAS rule is that 204 reponses should not have content keys.
++                 *
++                 * Reference: https://swagger.io/docs/specification/v3_0/describing-responses/ ("Empty Response Body" section)
++                 */
++                if ('content' in responseObj && Object.keys(responseObj.content).length !== 0) {
+                     const responseObjForStatusCode = {
+                         oneOf: [],
+                     };

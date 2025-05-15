@@ -1,0 +1,78 @@
+diff --git a/node_modules/@graphql-mesh/compose-cli/esm/getComposedSchemaFromConfig.js b/node_modules/@graphql-mesh/compose-cli/esm/getComposedSchemaFromConfig.js
+index 29ca7ba..7772642 100644
+--- a/node_modules/@graphql-mesh/compose-cli/esm/getComposedSchemaFromConfig.js
++++ b/node_modules/@graphql-mesh/compose-cli/esm/getComposedSchemaFromConfig.js
+@@ -38,6 +38,73 @@ export async function getComposedSchemaFromConfig(config, logger) {
+             transforms: subgraphCLIConfig.transforms,
+         };
+     }));
++    
++    if (config.useHATEOAS) {
++        if (!config.additionalTypeDefs) {
++            config.additionalTypeDefs = '';
++        }
++    
++        // the operationCatalog is used to map each link path to its relevant values
++        const operationCatalog = subgraphConfigsForComposition.reduce((catalog, config) => {
++            Object.entries(config.schema._queryType._fields).forEach(([key, value]) => {
++                const httpOperation = value.astNode.directives.find(directive => directive.name.value === 'httpOperation');
++                const path = httpOperation.arguments.find(arg => arg.name.value === 'path').value.value.replace(/args./,'');
++                catalog[path.replace(/(\{[^}]+\})/, "{}")] = {
++                    sourceType: value.type.name,
++                    sourceName: config.name,
++                    sourceFieldName: key,
++                    sourceArgs: (path.match(/\{([^}]+)\}/g) || []).map(param => param.slice(1, -1))
++                };
++            });
++            return catalog;
++        }, {});
++
++        let additionalTypeDefsFromHATEOAS = '';
++        subgraphConfigsForComposition.forEach((conf) => {
++            Object.entries(conf.schema._typeMap).forEach(([key, value]) => {
++                if (value._fields?._links) {
++                    if (value.constructor.name === 'GraphQLObjectType') {
++                        let subTypeDefs = `extend type ${key} {\n`;
++                        const links = value._fields?._links.type._links;
++                        links.forEach((link) => {
++                            const linkName = config.useHATEOAS.linkNameIdentifier ?
++                                link[config.useHATEOAS.linkNameIdentifier] : link["rel"];
++                            const linkPath = config.useHATEOAS.linkPathIdentifier ?
++                                link[config.useHATEOAS.linkPathIdentifier] : link["href"];
++                            // remove path parameters
++                            const linkPathAnonymized = linkPath?.replace(/(\{[^}]+\})/, "{}");
++                            // get path parameters
++                            const linkPathParams = (linkPath?.match(/\{([^}]+)\}/g) || []).map(param => param.slice(1, -1));
++
++                            const matchedCatalogPath = operationCatalog[linkPathAnonymized];
++                            if (matchedCatalogPath) {
++                                const requiredSelectionSet = linkPathParams.map(param => param).join(',');
++                                const sourceArgs = matchedCatalogPath.sourceArgs
++                                    .map((arg, index) => `${arg}: "{root.${linkPathParams[index]}}"`)
++                                    .join(',');
++
++                                subTypeDefs += `${linkName}: ${matchedCatalogPath.sourceType}\n
++                                @resolveTo(\n
++                                    sourceName: "${matchedCatalogPath.sourceName}"\n
++                                    sourceTypeName: "Query"\n
++                                    sourceFieldName: "${matchedCatalogPath.sourceFieldName}"\n
++                                    requiredSelectionSet: "{ ${requiredSelectionSet} }"\n
++                                    sourceArgs: { ${sourceArgs} }\n
++                                )\n`;
++                            }
++                        });
++                        subTypeDefs += `}\n`;
++                        // remove empty subTypeDefs
++                        subTypeDefs = subTypeDefs.replace(`extend type ${key} {\n}\n`,'');
++                        additionalTypeDefsFromHATEOAS += subTypeDefs;
++                    }
++                }
++            });
++        });
++
++        config.additionalTypeDefs += additionalTypeDefsFromHATEOAS;
++    }
++
+     let additionalTypeDefs;
+     if (config.additionalTypeDefs != null) {
+         let additionalFieldDirectiveUsed = false;

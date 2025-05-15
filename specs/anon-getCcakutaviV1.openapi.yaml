@@ -1,0 +1,461 @@
+openapi: 3.0.2
+info:
+  title: Cbamepava
+  version: 1.4.1813
+  description: Anonymized API
+  contact:
+    name: ''
+tags:
+  - name: tag
+servers:
+  - url: ''
+paths:
+  /ptetakake/{id}/cmarikilu:
+    get:
+      operationId: getCcakutavi
+      description: Anonymized
+      tags:
+        - tag
+      parameters:
+        - name: id
+          required: true
+          description: Anonymized
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Handling 200 responses for getCcakutavi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S_setorute'
+components:
+  schemas:
+    S_pezijati:
+      type: object
+      required:
+        - luvejadi
+      properties:
+        _links:
+          $ref: '#/components/schemas/S_sosujedi'
+        vapeliza:
+          type: string
+          format: date-time
+        guladipu:
+          type: string
+        jabolude:
+          type: string
+        tupevuge:
+          type: string
+        necadesa:
+          type: boolean
+        gumazipa:
+          type: string
+          enum:
+            - jupamani
+            - zadegufa
+        debicapu:
+          default: false
+          type: boolean
+        dekocelo:
+          default: false
+          type: boolean
+        luvejadi:
+          default: false
+          deprecated: true
+          type: boolean
+    S_sojosimu:
+      type: object
+      required:
+        - gizopabi
+        - fubomali
+      properties:
+        _links:
+          $ref: '#/components/schemas/S_rukituri'
+        _actions:
+          $ref: '#/components/schemas/S_razujeru'
+        tevitedo:
+          $ref: '#/components/schemas/S_pezijati'
+        tubozeko:
+          type: array
+          items:
+            $ref: '#/components/schemas/S_cinucose'
+        labigita:
+          type: string
+          format: date-time
+        mujelise:
+          type: string
+          format: date-time
+        sitelica:
+          type: string
+          format: date-time
+        id:
+          type: string
+        gizopabi:
+          type: string
+        fubomali:
+          type: string
+          enum:
+            - jozizede
+            - falocaca
+            - vovotugu
+            - gepuvoga
+        nonukabo:
+          type: string
+        jiretime:
+          type: integer
+          format: int32
+        tanupava:
+          type: string
+          enum:
+            - fupimasa
+            - ledajubu
+            - senefeci
+        nevikoje:
+          type: string
+          enum:
+            - vikirota
+            - tuvoceba
+        menubazo:
+          $ref: '#/components/schemas/S_suvugisa'
+    S_cinucose:
+      type: object
+      properties:
+        id:
+          type: string
+    S_setorute:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/S_sojosimu'
+    S_suvugisa:
+      type: object
+      required:
+        - mapezijo
+        - zemepemu
+      properties:
+        _links:
+          $ref: '#/components/schemas/S_ruvopoda'
+        mapezijo:
+          type: string
+        zemepemu:
+          type: string
+    S_gubudase:
+      type: object
+      required:
+        - vozarofo
+      properties:
+        junosivi:
+          type: string
+        vozarofo:
+          type: string
+    S_sosujedi:
+      type: object
+      properties:
+        tikolobu:
+          $ref: '#/components/schemas/S_gubudase'
+        jevenaji:
+          $ref: '#/components/schemas/S_gubudase'
+      x-links:
+        - rel: tikolobu
+          type: application/json
+          hrefPattern: /csovokase/{id}/atevitedo
+        - rel: jevenaji
+          type: application/json
+          hrefPattern: /rlelasafa/otolasuti/{id}
+    S_rukituri:
+      type: object
+      properties:
+        naciguki:
+          $ref: '#/components/schemas/S_gubudase'
+        jadafadi:
+          $ref: '#/components/schemas/S_gubudase'
+        pesilomu:
+          $ref: '#/components/schemas/S_gubudase'
+        fucobage:
+          $ref: '#/components/schemas/S_gubudase'
+        gasojotu:
+          $ref: '#/components/schemas/S_gubudase'
+        tivemovu:
+          $ref: '#/components/schemas/S_gubudase'
+        pabiguga:
+          $ref: '#/components/schemas/S_gubudase'
+        torekemo:
+          $ref: '#/components/schemas/S_gubudase'
+        gugicina:
+          $ref: '#/components/schemas/S_gubudase'
+        nukogupo:
+          $ref: '#/components/schemas/S_gubudase'
+        lofajapu:
+          $ref: '#/components/schemas/S_gubudase'
+        tisarupa:
+          $ref: '#/components/schemas/S_gubudase'
+        sukidovo:
+          $ref: '#/components/schemas/S_gubudase'
+        ketevebu:
+          $ref: '#/components/schemas/S_gubudase'
+        vatukotu:
+          $ref: '#/components/schemas/S_gubudase'
+        rulezibo:
+          $ref: '#/components/schemas/S_gubudase'
+        zovisebo:
+          $ref: '#/components/schemas/S_gubudase'
+        tofemoka:
+          $ref: '#/components/schemas/S_gubudase'
+        licicabu:
+          $ref: '#/components/schemas/S_gubudase'
+        daladisu:
+          $ref: '#/components/schemas/S_gubudase'
+        cuzigova:
+          $ref: '#/components/schemas/S_gubudase'
+        nalebila:
+          $ref: '#/components/schemas/S_gubudase'
+        javovizi:
+          $ref: '#/components/schemas/S_gubudase'
+        topapavo:
+          $ref: '#/components/schemas/S_gubudase'
+        basemobe:
+          $ref: '#/components/schemas/S_gubudase'
+        vuvekice:
+          $ref: '#/components/schemas/S_gubudase'
+        jojitija:
+          $ref: '#/components/schemas/S_gubudase'
+        fofijoza:
+          $ref: '#/components/schemas/S_gubudase'
+        biranore:
+          $ref: '#/components/schemas/S_gubudase'
+        notakapu:
+          $ref: '#/components/schemas/S_gubudase'
+        merepepa:
+          $ref: '#/components/schemas/S_gubudase'
+        gominemi:
+          $ref: '#/components/schemas/S_gubudase'
+        gasamogo:
+          $ref: '#/components/schemas/S_gubudase'
+        fakoceso:
+          $ref: '#/components/schemas/S_gubudase'
+        self:
+          $ref: '#/components/schemas/S_gubudase'
+        bumobore:
+          $ref: '#/components/schemas/S_gubudase'
+        fedelusa:
+          $ref: '#/components/schemas/S_gubudase'
+        zupigedi:
+          $ref: '#/components/schemas/S_gubudase'
+        mepavace:
+          $ref: '#/components/schemas/S_gubudase'
+      x-links:
+        - rel: naciguki
+          type: application/json
+          hrefPattern: /sdatasime/{dozuvazo}
+        - rel: jadafadi
+          type: application/json
+          hrefPattern: /vbulakuja/pgogafuku
+        - rel: pesilomu
+          type: application/json
+          hrefPattern: /vbulakuja/pgogafuku
+        - rel: fucobage
+          type: application/json
+          hrefPattern: /ckodadasu/{id}
+        - rel: gasojotu
+          type: application/json
+          hrefPattern: /csovokase/{id}
+        - rel: tivemovu
+          type: application/json
+          hrefPattern: /csovokase/{id}/dcogagali
+        - rel: pabiguga
+          type: application/json
+          hrefPattern: /csovokase/{id}/efozubuzi
+        - rel: torekemo
+          type: application/json
+          hrefPattern: /csovokase/{id}/agemijabu/czeraliko
+        - rel: gugicina
+          type: application/json
+          hrefPattern: /csovokase/{id}/ezuragama
+        - rel: nukogupo
+          type: application/json
+          hrefPattern: /csovokase/{id}/ezekinupo
+        - rel: lofajapu
+          type: application/json
+          hrefPattern: /csovokase/{id}/enulosafe
+        - rel: tisarupa
+          type: application/json
+          hrefPattern: /csovokase/{tutamiji}/agemijabu/elaremaza
+        - rel: sukidovo
+          type: application/json
+          hrefPattern: /csovokase/{id}/agemijabu/gtemijeno
+        - rel: ketevebu
+          type: application/json
+          hrefPattern: /csovokase/{tutamiji}/agemijabu/rdaradivi
+        - rel: vatukotu
+          type: application/json
+          hrefPattern: /csovokase/{tutamiji}/ejufurise
+        - rel: rulezibo
+          type: application/json
+          hrefPattern: /csovokase/{id}/agemijabu/rzuzatuko
+        - rel: zovisebo
+          type: application/json
+          hrefPattern: /csovokase/{id}/ejugazatu
+        - rel: tofemoka
+          type: application/json
+          hrefPattern: /csovokase/{id}/ecadojeba
+        - rel: licicabu
+          type: application/json
+          hrefPattern: /csovokase/{id}/efulimimi
+        - rel: daladisu
+          type: application/json
+          hrefPattern: /csovokase/{id}/evesomapo
+        - rel: cuzigova
+          type: application/json
+          hrefPattern: /csovokase/{id}/igumugefe
+        - rel: nalebila
+          type: application/json
+          hrefPattern: /csovokase/{id}/lnalebila
+        - rel: javovizi
+          type: application/json
+          hrefPattern: /crecimume/{jinoleko}/mjavovizi
+        - rel: topapavo
+          type: application/json
+          hrefPattern: /csovokase/{id}/mjazegumo
+        - rel: basemobe
+          type: application/json
+          hrefPattern: /csovokase/{id}/ntadopizi
+        - rel: vuvekice
+          type: application/json
+          hrefPattern: /csovokase/{id}/nsomeduca
+        - rel: jojitija
+          type: application/json
+          hrefPattern: /csovokase/{id}/nvafukadi
+        - rel: fofijoza
+          type: application/json
+          hrefPattern: /csovokase/{id}/olececimu
+        - rel: biranore
+          type: application/json
+          hrefPattern: /csovokase/{id}/ozujipuje
+        - rel: notakapu
+          type: application/json
+          hrefPattern: /csovokase/{id}/onotakapu
+        - rel: merepepa
+          type: application/json
+          hrefPattern: /csovokase/{tutamiji}/ptulazima
+        - rel: gominemi
+          type: application/json
+          hrefPattern: /csovokase/{tutamiji}/plubicodu
+        - rel: gasamogo
+          type: application/json
+          hrefPattern: /csovokase/{id}/plategemu
+        - rel: fakoceso
+          type: application/json
+          hrefPattern: /crozuzibi
+        - rel: self
+          type: application/json
+          hrefPattern: /csovokase/{id}
+        - rel: bumobore
+          type: application/json
+          hrefPattern: /csovokase/{id}/sfagevedo
+        - rel: fedelusa
+          type: application/json
+          hrefPattern: /csovokase/{id}/sneredoto
+        - rel: zupigedi
+          type: application/json
+          hrefPattern: /csovokase/{id}/tzupigedi
+        - rel: mepavace
+          type: application/json
+          hrefPattern: /ptetakake/{id}
+    S_ruvopoda:
+      type: object
+      required:
+        - self
+      properties:
+        self:
+          $ref: '#/components/schemas/S_gubudase'
+      x-links:
+        - rel: self
+          type: application/json
+          hrefPattern: /ptetakake/{id}
+    S_barakolu:
+      type: object
+      required:
+        - gemijabu
+        - vanakasa
+      properties:
+        junosivi:
+          type: string
+        gemijabu:
+          type: string
+        vanakasa:
+          type: string
+          enum:
+            - fulafofa
+            - padufuvi
+            - fizemaka
+            - korinafu
+    S_razujeru:
+      type: object
+      properties:
+        lokofovo:
+          $ref: '#/components/schemas/S_barakolu'
+        bovumoni:
+          $ref: '#/components/schemas/S_barakolu'
+        pamisajo:
+          $ref: '#/components/schemas/S_barakolu'
+        sonikeve:
+          $ref: '#/components/schemas/S_barakolu'
+      x-actions:
+        - rel: lokofovo
+          type: application/json
+          method: POST
+          actionPattern: /csovokase/{id}/cdigazafe
+        - rel: bovumoni
+          type: application/json
+          method: POST
+          actionPattern: /dgivalacu/rsenopope
+        - rel: pamisajo
+          type: application/json
+          method: POST
+          actionPattern: /otolasuti/tculakusa
+        - rel: sonikeve
+          type: application/json
+          method: POST
+          actionPattern: /csovokase/{id}/tcubidoro
+    S_cimigoza:
+      type: object
+      required:
+        - sejucabu
+      properties:
+        sejucabu:
+          type: string
+          enum:
+            - dadomufu
+        torosome:
+          type: string
+          maxLength: 256
+        vopopubi:
+          type: string
+        nufabume:
+          type: array
+          items:
+            type: string
+            maxLength: 64
+    S_vurijapa:
+      type: object
+      required:
+        - sejucabu
+      properties:
+        sejucabu:
+          type: string
+          enum:
+            - zarisemi
+        torosome:
+          type: string
+          maxLength: 256
+        vopopubi:
+          type: string
+        nufabume:
+          type: array
+          items:
+            type: string
+            maxLength: 64

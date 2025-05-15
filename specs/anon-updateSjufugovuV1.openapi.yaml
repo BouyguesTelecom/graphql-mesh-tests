@@ -1,0 +1,89 @@
+openapi: 3.0.2
+info:
+  title: Grebaboga
+  version: 1.0.208
+  description: Anonymized API
+  contact:
+    name: ''
+tags:
+  - name: tag
+servers:
+  - url: ''
+paths:
+  /pcenegago/{id}/stanupava:
+    put:
+      operationId: updateSjufugovu
+      description: Anonymized
+      tags:
+        - tag
+      parameters:
+        - name: id
+          required: true
+          description: Anonymized
+          in: path
+          schema:
+            maxLength: 36
+            minLength: 1
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/S_nedudige'
+        description: Anonymized
+        required: true
+      responses:
+        '204':
+          description: Handling 204 responses for updateSjufugovu
+components:
+  schemas:
+    S_nedudige:
+      type: object
+      required:
+        - tanupava
+      properties:
+        tanupava:
+          type: string
+          enum:
+            - lifagoke
+            - bukupoke
+            - ricibuma
+            - ladibote
+    S_kacadiri:
+      type: object
+      required:
+        - sejucabu
+      properties:
+        sejucabu:
+          type: string
+          enum:
+            - didofeba
+        torosome:
+          type: string
+          maxLength: 256
+        vopopubi:
+          type: string
+        nufabume:
+          type: array
+          items:
+            type: string
+            maxLength: 64
+    S_kajoduvu:
+      type: object
+      required:
+        - sejucabu
+      properties:
+        sejucabu:
+          type: string
+          enum:
+            - zarisemi
+        torosome:
+          type: string
+          maxLength: 256
+        vopopubi:
+          type: string
+        nufabume:
+          type: array
+          items:
+            type: string
+            maxLength: 64

@@ -1,0 +1,14 @@
+{
+  "name": "graphql-mesh-tests",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "patch-package",
+    "test": "NODE_TLS_REJECT_UNAUTHORIZED=0 npx mesh-compose -c ./graph-local.config.ts"
+  },
+  "dependencies": {
+    "@graphql-mesh/compose-cli": "1.4.7",
+    "@omnigraph/openapi": "0.109.7",
+    "js-yaml": "^4.1.0",
+    "patch-package": "^8.0.0"
+  }
+}

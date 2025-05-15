@@ -1,0 +1,12 @@
+diff --git a/node_modules/@omnigraph/json-schema/esm/getComposerFromJSONSchema.js b/node_modules/@omnigraph/json-schema/esm/getComposerFromJSONSchema.js
+index 46e5a0e..db1ff5e 100644
+--- a/node_modules/@omnigraph/json-schema/esm/getComposerFromJSONSchema.js
++++ b/node_modules/@omnigraph/json-schema/esm/getComposerFromJSONSchema.js
+@@ -651,6 +651,7 @@ export function getComposerFromJSONSchema({ subgraphName, schema, logger, getSca
+                     }),
+                     description: subSchema.description,
+                     fields: {},
++                    links: subSchema['x-links'],
+                     directives: [],
+                     extensions: {
+                         default: subSchema.default,

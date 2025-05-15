@@ -1,0 +1,39 @@
+openapi: 3.0.2
+info:
+  title: Bmulereva
+  version: 5.0.111
+  description: Anonymized API
+  contact:
+    name: ''
+tags:
+  - name: tag
+servers:
+  - url: ''
+paths:
+  /fpirocote/bfiracocu:
+    get:
+      operationId: searchBrigineve
+      description: Anonymized
+      tags:
+        - tag
+      responses:
+        '200':
+          description: Handling 200 responses for searchBrigineve
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S_macukoru'
+components:
+  schemas:
+    S_macukoru:
+      type: object
+      discriminator:
+        propertyName: junosivi
+        mapping:
+          pirocote: '#/components/schemas/S_fazusope'
+      properties:
+        junosivi:
+          type: string
+    S_fazusope:
+      allOf:
+        - $ref: '#/components/schemas/S_macukoru'

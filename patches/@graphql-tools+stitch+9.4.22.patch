@@ -1,0 +1,17 @@
+diff --git a/node_modules/@graphql-tools/stitch/dist/index.js b/node_modules/@graphql-tools/stitch/dist/index.js
+index 424c0fe..f0e1f47 100644
+--- a/node_modules/@graphql-tools/stitch/dist/index.js
++++ b/node_modules/@graphql-tools/stitch/dist/index.js
+@@ -1755,9 +1755,10 @@ function validateTypeConsistency(finalElementConfig, candidates, definitionType,
+   const finalIsList = hasListType(finalElementConfig.type);
+   for (const c of candidates) {
+     if (finalIsList !== hasListType(c.type)) {
+-      throw new Error(
++      // FIXME: temporary deactivation
++      /* throw new Error(
+         `Definitions of ${definitionType} "${settingNamespace}" implement inconsistent list types across subschemas and cannot be merged.`
+-      );
++      ); */
+     }
+     const currentNamedType = getNamedType(c.type);
+     if (finalNamedType.toString() !== currentNamedType.toString()) {

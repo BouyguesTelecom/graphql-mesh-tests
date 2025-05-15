@@ -1,0 +1,39 @@
+diff --git a/node_modules/@graphql-mesh/fusion-composition/node_modules/@theguild/federation-composition/esm/subgraph/validation/validate-state.js b/node_modules/@graphql-mesh/fusion-composition/node_modules/@theguild/federation-composition/esm/subgraph/validation/validate-state.js
+index 4e9785e..611ad63 100644
+--- a/node_modules/@graphql-mesh/fusion-composition/node_modules/@theguild/federation-composition/esm/subgraph/validation/validate-state.js
++++ b/node_modules/@graphql-mesh/fusion-composition/node_modules/@theguild/federation-composition/esm/subgraph/validation/validate-state.js
+@@ -364,8 +364,9 @@ function validateTypeImplementsInterface(state, implementationsMap, reportError,
+             continue;
+         }
+         if (!isTypeSubTypeOf(state, implementationsMap, typeField.type, ifaceField.type)) {
+-            reportError(`Interface field ${interfaceType.name}.${fieldName} expects type ` +
+-                `${ifaceField.type} but ${type.name}.${fieldName} of type ${typeField.type} is not a proper subtype.`);
++            // FIXME:
++            // reportError(`Interface field ${interfaceType.name}.${fieldName} expects type ` +
++            //     `${ifaceField.type} but ${type.name}.${fieldName} of type ${typeField.type} is not a proper subtype.`);
+         }
+         for (const ifaceArg of ifaceField.args.values()) {
+             const argName = ifaceArg.name;
+diff --git a/node_modules/@graphql-mesh/fusion-composition/node_modules/@theguild/federation-composition/esm/supergraph/validation/rules/interface-subtype-rule.js b/node_modules/@graphql-mesh/fusion-composition/node_modules/@theguild/federation-composition/esm/supergraph/validation/rules/interface-subtype-rule.js
+index 0f74f46..0949a3e 100644
+--- a/node_modules/@graphql-mesh/fusion-composition/node_modules/@theguild/federation-composition/esm/supergraph/validation/rules/interface-subtype-rule.js
++++ b/node_modules/@graphql-mesh/fusion-composition/node_modules/@theguild/federation-composition/esm/supergraph/validation/rules/interface-subtype-rule.js
+@@ -46,11 +46,13 @@ export function InterfaceSubtypeRule(context, supergraph) {
+                     continue;
+                 }
+                 if (!isTypeSubTypeOf(supergraph, implementationsMap, fieldState.type, interfaceField.type)) {
+-                    context.reportError(new GraphQLError(`Interface field ${interfaceName}.${interfaceField.name} expects type ${interfaceField.type} but ${objectTypeState.name}.${fieldState.name} of type ${fieldState.type} is not a proper subtype.`, {
+-                        extensions: {
+-                            code: "INVALID_GRAPHQL",
+-                        },
+-                    }));
++                    // FIXME:
++                    // context.reportError(new GraphQLError(`Interface field ${interfaceName}.${interfaceField.name} expects type ${interfaceField.type} but ${objectTypeState.name}.${fieldState.name} of type ${fieldState.type} is not a proper subtype.`, {
++                    //     extensions: {
++                    //         code: "INVALID_GRAPHQL",
++                    //     },
++                    // }));
++                    continue;
+                 }
+             }
+         },

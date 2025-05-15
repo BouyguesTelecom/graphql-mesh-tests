@@ -1,0 +1,459 @@
+openapi: 3.0.2
+info:
+  title: Pvurukaco
+  version: 1.2.62
+  description: Anonymized API
+  contact:
+    name: ''
+tags:
+  - name: tag
+servers:
+  - url: ''
+paths:
+  /ptetakake/{id}:
+    get:
+      operationId: getPsuvugisa
+      description: Anonymized
+      tags:
+        - tag
+      parameters:
+        - name: id
+          required: true
+          description: Anonymized
+          in: path
+          schema:
+            maxLength: 20
+            type: string
+      responses:
+        '200':
+          description: Handling 200 responses for getPsuvugisa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S_suvugisa'
+components:
+  schemas:
+    S_coladise:
+      allOf:
+        - $ref: '#/components/schemas/S_suvugisa'
+        - type: object
+          properties:
+            merazesa:
+              maxLength: 30
+              minLength: 1
+              type: string
+            dimetaje:
+              maxLength: 5
+              minLength: 1
+              type: string
+            mujelise:
+              type: string
+              format: date
+            zarelali:
+              type: integer
+              format: int32
+            satuvora:
+              type: string
+              enum:
+                - tilepeji
+                - pidetavi
+                - gubotema
+                - vabegiso
+                - foterude
+                - sibavoru
+            vinanuna:
+              maxLength: 40
+              minLength: 1
+              type: string
+            difineba:
+              $ref: '#/components/schemas/S_vigoreju'
+            nikipala:
+              maxLength: 15
+              minLength: 1
+              type: string
+    S_kucupabe:
+      allOf:
+        - $ref: '#/components/schemas/S_suvugisa'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/S_gibisume'
+            miputesa:
+              type: string
+              enum:
+                - kukucile
+                - ripirumu
+                - meviteco
+            foroboci:
+              maxLength: 3
+              minLength: 1
+              type: string
+            fidajovi:
+              type: string
+            dagujuko:
+              type: string
+              format: date
+            kojifone:
+              maxLength: 15
+              minLength: 1
+              type: string
+            puvolifa:
+              maxLength: 40
+              minLength: 1
+              type: string
+            danagide:
+              maxLength: 40
+              minLength: 1
+              type: string
+            dodajuse:
+              default: false
+              type: boolean
+    S_cogavuja:
+      type: object
+      required:
+        - gojedopa
+        - junosivi
+      properties:
+        fibusisi:
+          type: string
+          format: date
+        pudelota:
+          type: string
+          format: date
+        gojedopa:
+          maxLength: 30
+          minLength: 1
+          type: string
+        junosivi:
+          maxLength: 30
+          minLength: 1
+          type: string
+    S_suvugisa:
+      type: object
+      discriminator:
+        propertyName: junosivi
+        mapping:
+          suvugisa: '#/components/schemas/S_suvugisa'
+          jefojupo: '#/components/schemas/S_coladise'
+          sivagure: '#/components/schemas/S_kucupabe'
+      required:
+        - id
+        - junosivi
+      properties:
+        _links:
+          $ref: '#/components/schemas/S_ruvopoda'
+        _actions:
+          $ref: '#/components/schemas/S_naferico'
+        kemubala:
+          maxLength: 255
+          minLength: 1
+          type: array
+          items:
+            maxLength: 255
+            minLength: 1
+            type: string
+        id:
+          maxLength: 20
+          minLength: 1
+          type: string
+        dumociza:
+          maxLength: 20
+          minLength: 1
+          type: string
+        timatonu:
+          maxLength: 20
+          minLength: 1
+          type: string
+        veratuka:
+          $ref: '#/components/schemas/S_cogavuja'
+        junosivi:
+          type: string
+    S_vigoreju:
+      type: object
+      required:
+        - puvolifa
+      properties:
+        miputesa:
+          type: string
+          enum:
+            - kukucile
+            - ripirumu
+            - meviteco
+        foroboci:
+          maxLength: 3
+          minLength: 1
+          type: string
+        dagujuko:
+          type: string
+          format: date
+        kojifone:
+          maxLength: 15
+          minLength: 1
+          type: string
+        puvolifa:
+          type: string
+        danagide:
+          type: string
+        dodajuse:
+          default: false
+          type: boolean
+    S_gubudase:
+      type: object
+      required:
+        - vozarofo
+      properties:
+        junosivi:
+          type: string
+        vozarofo:
+          type: string
+    S_gibisume:
+      type: object
+      properties:
+        rapubura:
+          $ref: '#/components/schemas/S_gubudase'
+      x-links:
+        - rel: rapubura
+          type: application/json
+          hrefPattern: /ptetakake/{id}
+    S_ruvopoda:
+      type: object
+      required:
+        - self
+      properties:
+        gesetuba:
+          $ref: '#/components/schemas/S_gubudase'
+        rebazene:
+          $ref: '#/components/schemas/S_gubudase'
+        nozogadu:
+          $ref: '#/components/schemas/S_gubudase'
+        cuzanema:
+          $ref: '#/components/schemas/S_gubudase'
+        davozuri:
+          $ref: '#/components/schemas/S_gubudase'
+        lipojeva:
+          $ref: '#/components/schemas/S_gubudase'
+        putazide:
+          $ref: '#/components/schemas/S_gubudase'
+        zemalota:
+          $ref: '#/components/schemas/S_gubudase'
+        gudujari:
+          $ref: '#/components/schemas/S_gubudase'
+        gejoluzi:
+          $ref: '#/components/schemas/S_gubudase'
+        cefejicu:
+          $ref: '#/components/schemas/S_gubudase'
+        dutubepi:
+          $ref: '#/components/schemas/S_gubudase'
+        jilarusa:
+          $ref: '#/components/schemas/S_gubudase'
+        tabedudu:
+          $ref: '#/components/schemas/S_gubudase'
+        tumetupa:
+          $ref: '#/components/schemas/S_gubudase'
+        vonetemo:
+          $ref: '#/components/schemas/S_gubudase'
+        gidifaji:
+          $ref: '#/components/schemas/S_gubudase'
+        zazikejo:
+          $ref: '#/components/schemas/S_gubudase'
+        zivuteva:
+          $ref: '#/components/schemas/S_gubudase'
+        zodavise:
+          $ref: '#/components/schemas/S_gubudase'
+        nokivapo:
+          $ref: '#/components/schemas/S_gubudase'
+        kakadasu:
+          $ref: '#/components/schemas/S_gubudase'
+        nalebila:
+          $ref: '#/components/schemas/S_gubudase'
+        demalito:
+          $ref: '#/components/schemas/S_gubudase'
+        cagevoku:
+          $ref: '#/components/schemas/S_gubudase'
+        zufudalu:
+          $ref: '#/components/schemas/S_gubudase'
+        celajope:
+          $ref: '#/components/schemas/S_gubudase'
+        zoletize:
+          $ref: '#/components/schemas/S_gubudase'
+        bacuvepi:
+          $ref: '#/components/schemas/S_gubudase'
+        micupazo:
+          $ref: '#/components/schemas/S_gubudase'
+        sesacepi:
+          $ref: '#/components/schemas/S_gubudase'
+        gevutafi:
+          $ref: '#/components/schemas/S_gubudase'
+        kocucala:
+          $ref: '#/components/schemas/S_gubudase'
+        pijesotu:
+          $ref: '#/components/schemas/S_gubudase'
+        minafavu:
+          $ref: '#/components/schemas/S_gubudase'
+        self:
+          $ref: '#/components/schemas/S_gubudase'
+        pibokizo:
+          $ref: '#/components/schemas/S_gubudase'
+        saliruba:
+          $ref: '#/components/schemas/S_gubudase'
+      x-links:
+        - rel: gesetuba
+          type: application/json
+          hrefPattern: /ptetakake/{id}/apezagajo
+        - rel: rebazene
+          type: application/json
+          hrefPattern: /ptetakake/{id}/arebazene
+        - rel: nozogadu
+          type: application/json
+          hrefPattern: /ptetakake/{id}/cnozogadu
+        - rel: cuzanema
+          type: application/json
+          hrefPattern: /ptetakake/{id}/ccoridako
+        - rel: davozuri
+          type: application/json
+          hrefPattern: /ptetakake/{id}/clipafifa
+        - rel: lipojeva
+          type: application/json
+          hrefPattern: /clipojeva
+        - rel: putazide
+          type: application/json
+          hrefPattern: /ptetakake/{id}/ckodadasu
+        - rel: zemalota
+          type: application/json
+          hrefPattern: /ptetakake/{id}/cpudinepu
+        - rel: gudujari
+          type: application/json
+          hrefPattern: /ptetakake/{penomofe}/cromezepa
+        - rel: gejoluzi
+          type: application/json
+          hrefPattern: /ptetakake/{id}/cmarikilu
+        - rel: cefejicu
+          type: application/json
+          hrefPattern: /ptetakake/{id}/czakozede
+        - rel: dutubepi
+          type: application/json
+          hrefPattern: /ptetakake/{id}/cjuvisife
+        - rel: jilarusa
+          type: application/json
+          hrefPattern: /ptetakake/{id}/djilarusa
+        - rel: tabedudu
+          type: application/json
+          hrefPattern: /ptetakake/{id}/dmaveduga
+        - rel: tumetupa
+          type: application/json
+          hrefPattern: /ptetakake/{id}/dfilegefo
+        - rel: vonetemo
+          type: application/json
+          hrefPattern: /ptetakake/{id}/emamivika
+        - rel: gidifaji
+          type: application/json
+          hrefPattern: /ptetakake/{penomofe}/agemijabu/rsetibeze
+        - rel: zazikejo
+          type: application/json
+          hrefPattern: /ptetakake/{id}/agemijabu/rvitavuzi
+        - rel: zivuteva
+          type: application/json
+          hrefPattern: /ptetakake/{id}/ckodadasu/agemijabu/uvifisuge
+        - rel: zodavise
+          type: application/json
+          hrefPattern: /ptetakake/{id}/fzodavise
+        - rel: nokivapo
+          type: application/json
+          hrefPattern: /ptetakake/{id}/inekeregi
+        - rel: kakadasu
+          type: application/json
+          hrefPattern: /ptetakake/{id}/izimodasi
+        - rel: nalebila
+          type: application/json
+          hrefPattern: /ptetakake/{id}/lnalebila
+        - rel: demalito
+          type: application/json
+          hrefPattern: /ptetakake/{penomofe}/dnakazaci
+        - rel: cagevoku
+          type: application/json
+          hrefPattern: /ptetakake/{id}/agemijabu/lsejabice
+        - rel: zufudalu
+          type: application/json
+          hrefPattern: /ptetakake/{id}/mvotugeme
+        - rel: celajope
+          type: application/json
+          hrefPattern: /ptetakake/{id}/mcelajope
+        - rel: zoletize
+          type: application/json
+          hrefPattern: /ptetakake/{id}/nzoletize
+        - rel: bacuvepi
+          type: application/json
+          hrefPattern: /ptetakake/{id}/pbacuvepi
+        - rel: micupazo
+          type: application/json
+          hrefPattern: /ptetakake/{id}/prinadeje
+        - rel: sesacepi
+          type: application/json
+          hrefPattern: /ptetakake/{id}/pjirelunu
+        - rel: gevutafi
+          type: application/json
+          hrefPattern: /crozuzibi
+        - rel: kocucala
+          type: application/json
+          hrefPattern: /ddezegope
+        - rel: pijesotu
+          type: application/json
+          hrefPattern: /ptetakake/{penomofe}/lsoluvona
+        - rel: minafavu
+          type: application/json
+          hrefPattern: /ddezegope/lgojarola
+        - rel: self
+          type: application/json
+          hrefPattern: /ptetakake/{id}
+        - rel: pibokizo
+          type: application/json
+          hrefPattern: /ptetakake/{id}/sfajunopa
+        - rel: saliruba
+          type: application/json
+          hrefPattern: /ptetakake/{id}/ssaliruba
+    S_barakolu:
+      type: object
+      required:
+        - gemijabu
+        - vanakasa
+      properties:
+        junosivi:
+          type: string
+        gemijabu:
+          type: string
+        vanakasa:
+          type: string
+          enum:
+            - fulafofa
+            - padufuvi
+            - fizemaka
+            - korinafu
+    S_naferico:
+      type: object
+      properties:
+        cijafuga:
+          $ref: '#/components/schemas/S_barakolu'
+      x-actions:
+        - rel: cijafuga
+          type: application/json
+          method: PUT
+          actionPattern: /ptetakake/{id}
+    S_bulusago:
+      type: object
+      required:
+        - sejucabu
+      properties:
+        sejucabu:
+          type: string
+          enum:
+            - zarisemi
+        torosome:
+          type: string
+          maxLength: 256
+        vopopubi:
+          type: string
+        nufabume:
+          type: array
+          items:
+            type: string
+            maxLength: 64

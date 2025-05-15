@@ -1,0 +1,312 @@
+openapi: 3.0.2
+info:
+  title: Pzuzokino
+  version: 1.2.45
+  description: Anonymized API
+  contact:
+    name: ''
+tags:
+  - name: tag
+servers:
+  - url: ''
+paths:
+  /ptetakake/{id}/prinadeje:
+    post:
+      operationId: ctocovamo
+      description: Anonymized
+      tags:
+        - tag
+      parameters:
+        - name: id
+          required: true
+          description: Anonymized
+          in: path
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/S_saviragu'
+        description: Anonymized
+        required: true
+      responses:
+        '204':
+          description: Handling 204 responses for ctocovamo
+    get:
+      operationId: getPderecata
+      description: Anonymized
+      tags:
+        - tag
+      parameters:
+        - name: id
+          required: true
+          description: Anonymized
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Handling 200 responses for getPderecata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S_vizibare'
+components:
+  schemas:
+    S_saviragu:
+      type: object
+      properties:
+        bekofoki:
+          type: string
+        madodopu:
+          type: string
+        bojesilu:
+          type: array
+          items:
+            $ref: '#/components/schemas/S_josedile'
+        civadizu:
+          type: array
+          items:
+            $ref: '#/components/schemas/S_derecata'
+    S_cenumugu:
+      type: object
+      required:
+        - bisuveba
+      properties:
+        _links:
+          $ref: '#/components/schemas/S_rusalimo'
+        muzutico:
+          default: false
+          type: boolean
+        civadizu:
+          type: array
+          items:
+            $ref: '#/components/schemas/S_tamogasu'
+        bisuveba:
+          type: string
+          enum:
+            - dutapake
+            - kepegupo
+            - vikirota
+            - tuvoceba
+        vojaliko:
+          type: string
+    S_josedile:
+      type: object
+      properties:
+        madodopu:
+          type: string
+        vavotojo:
+          default: false
+          type: boolean
+        macigebo:
+          default: false
+          type: boolean
+        zirapede:
+          default: true
+          type: boolean
+    S_jamararo:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/S_fajujevi'
+        jetomadu:
+          type: string
+          format: date-time
+        zarovama:
+          type: string
+          format: date-time
+        cupecapa:
+          type: string
+          format: date-time
+        madodopu:
+          type: string
+        vavotojo:
+          default: false
+          type: boolean
+        macigebo:
+          default: false
+          type: boolean
+        zirapede:
+          default: true
+          type: boolean
+    S_tamogasu:
+      type: object
+      required:
+        - jurinamo
+        - diritima
+      properties:
+        jatekuda:
+          type: string
+          format: date-time
+        id:
+          type: string
+        jurinamo:
+          default: false
+          type: boolean
+        diritima:
+          type: string
+          enum:
+            - lelizuga
+            - kepegupo
+            - givirice
+            - domuseli
+    S_derecata:
+      type: object
+      required:
+        - jurinamo
+      properties:
+        id:
+          type: string
+        jurinamo:
+          default: false
+          type: boolean
+    S_vizibare:
+      type: object
+      properties:
+        _actions:
+          $ref: '#/components/schemas/S_kezipagu'
+        juvisife:
+          type: array
+          items:
+            $ref: '#/components/schemas/S_cenumugu'
+        bojesilu:
+          type: array
+          items:
+            $ref: '#/components/schemas/S_jamararo'
+    S_gubudase:
+      type: object
+      required:
+        - vozarofo
+      properties:
+        junosivi:
+          type: string
+        vozarofo:
+          type: string
+    S_rusalimo:
+      type: object
+      required:
+        - zucalaja
+      properties:
+        zucalaja:
+          $ref: '#/components/schemas/S_gubudase'
+      x-links:
+        - rel: zucalaja
+          type: application/json
+          hrefPattern: /ptetakake/{id}
+    S_fajujevi:
+      type: object
+      properties:
+        zucalaja:
+          $ref: '#/components/schemas/S_gubudase'
+      x-links:
+        - rel: zucalaja
+          type: application/json
+          hrefPattern: /ptetakake/{id}
+    S_barakolu:
+      type: object
+      required:
+        - gemijabu
+        - vanakasa
+      properties:
+        junosivi:
+          type: string
+        gemijabu:
+          type: string
+        vanakasa:
+          type: string
+          enum:
+            - fulafofa
+            - padufuvi
+            - fizemaka
+            - korinafu
+    S_kezipagu:
+      type: object
+      required:
+        - micupazo
+      properties:
+        micupazo:
+          $ref: '#/components/schemas/S_barakolu'
+      x-actions:
+        - rel: micupazo
+          type: application/json
+          method: POST
+          actionPattern: /ptetakake/{id}/prinadeje
+    S_fabazabe:
+      type: object
+      required:
+        - sejucabu
+      properties:
+        sejucabu:
+          type: string
+          enum:
+            - dadomufu
+        torosome:
+          type: string
+          maxLength: 256
+        vopopubi:
+          type: string
+        nufabume:
+          type: array
+          items:
+            type: string
+            maxLength: 64
+    S_dizadifa:
+      type: object
+      required:
+        - sejucabu
+      properties:
+        sejucabu:
+          type: string
+          enum:
+            - losetagu
+            - cevuguva
+        torosome:
+          type: string
+          maxLength: 256
+        vopopubi:
+          type: string
+        nufabume:
+          type: array
+          items:
+            type: string
+            maxLength: 64
+    S_tupadama:
+      type: object
+      required:
+        - sejucabu
+      properties:
+        sejucabu:
+          type: string
+          enum:
+            - dadomufu
+        torosome:
+          type: string
+          maxLength: 256
+        vopopubi:
+          type: string
+        nufabume:
+          type: array
+          items:
+            type: string
+            maxLength: 64
+    S_tafujote:
+      type: object
+      required:
+        - sejucabu
+      properties:
+        sejucabu:
+          type: string
+          enum:
+            - zarisemi
+        torosome:
+          type: string
+          maxLength: 256
+        vopopubi:
+          type: string
+        nufabume:
+          type: array
+          items:
+            type: string
+            maxLength: 64
